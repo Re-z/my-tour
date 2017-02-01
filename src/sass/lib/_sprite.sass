@@ -1,0 +1,100 @@
+$icons: (0:0)
+$icons: map-merge($icons,(arrow: (X: -40px, Y:-22px, W: 16px, H: 16px, TW: 109px, TH: 74px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(cancel-red: (X: 0px, Y:-22px, W: 16px, H: 17px, TW: 109px, TH: 74px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(cancel: (X: 0px, Y:-60px, W: 14px, H: 14px, TW: 109px, TH: 74px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(crown: (X: -20px, Y:-43px, W: 13px, H: 10px, TW: 109px, TH: 74px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(indo: (X: -60px, Y:-22px, W: 16px, H: 13px, TW: 109px, TH: 74px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(plus: (X: -20px, Y:-22px, W: 16px, H: 17px, TW: 109px, TH: 74px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(rating: (X: 0px, Y:0px, W: 109px, H: 18px, TW: 109px, TH: 74px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(thai: (X: -80px, Y:-22px, W: 16px, H: 13px, TW: 109px, TH: 74px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(viet: (X: 0px, Y:-43px, W: 16px, H: 13px, TW: 109px, TH: 74px, IMG: '../img/icons.png')))
+
+
+// Gets an attribute from the sass map
+@function icon-attr($icon, $attr)
+	$icon: map-get($icons, $icon)
+	@return map-get($icon, $attr)
+
+@mixin sprite($iconName)
+	background-image: url(icon-attr($iconName, IMG))
+	width: icon-attr($iconName, W)
+	height: icon-attr($iconName, H)
+	background-position: icon-attr($iconName, X) icon-attr($iconName, Y)
+@mixin sprite-position($iconName)
+	background-position: icon-attr($iconName, X) icon-attr($iconName, Y)
+@mixin sprite-retina($iconName)
+	background-image: url(icon-attr($iconName, IMG))
+	$width: icon-attr($iconName, W)
+	$height: icon-attr($iconName, H)
+	width: $width/2
+	height: $height/2
+	$x: icon-attr($iconName, X)
+	$y: icon-attr($iconName, Y)
+	background-position: $x/2 $y/2
+	$tw: icon-attr($iconName, TW) 	
+	$th: icon-attr($iconName, TH)
+	background-size: $tw/2 $th/2  	
+
+
+@mixin s($i)
+	+sprite($i)
+@mixin sp($i)
+	+sprite-position($i)
+@mixin sr($i)
+	+sprite-retina($i)	
+
+//
+//.icon-arrow
+//	width: 16px
+//	height: 16px
+//	background-image: url('../img/icons.png')
+//	background-position: -40px -22px
+//
+//.icon-cancel-red
+//	width: 16px
+//	height: 17px
+//	background-image: url('../img/icons.png')
+//	background-position: 0px -22px
+//
+//.icon-cancel
+//	width: 14px
+//	height: 14px
+//	background-image: url('../img/icons.png')
+//	background-position: 0px -60px
+//
+//.icon-crown
+//	width: 13px
+//	height: 10px
+//	background-image: url('../img/icons.png')
+//	background-position: -20px -43px
+//
+//.icon-indo
+//	width: 16px
+//	height: 13px
+//	background-image: url('../img/icons.png')
+//	background-position: -60px -22px
+//
+//.icon-plus
+//	width: 16px
+//	height: 17px
+//	background-image: url('../img/icons.png')
+//	background-position: -20px -22px
+//
+//.icon-rating
+//	width: 109px
+//	height: 18px
+//	background-image: url('../img/icons.png')
+//	background-position: 0px 0px
+//
+//.icon-thai
+//	width: 16px
+//	height: 13px
+//	background-image: url('../img/icons.png')
+//	background-position: -80px -22px
+//
+//.icon-viet
+//	width: 16px
+//	height: 13px
+//	background-image: url('../img/icons.png')
+//	background-position: 0px -43px
+//

@@ -1,0 +1,333 @@
+$header: #0089D5
+$blue: #009DDE
+//$secondary: #7D70B0
+$main: #bdbdbd
+$borderColor: #DFDFDF
+$desc: 1200
+$tab: 1024
+$mob: 767
+
+=flex($vert:space-between, $hor:stretch)
+	display: flex
+	justify-content: $vert
+	align-items: $hor
+	flex-wrap: wrap
+
+
+a
+	text-decoration: none
+	color: inherit
+	&:active
+		transform: scale(.95)
+
+
+.inner
+	width: 1200px
+	margin: 0 auto
+	position: relative
+	padding: 0 10px
+	+r($desc)
+		width: auto
+
+.header
+	padding: 8px 0
+	background: $header
+
+	//&__burger
+	//	width: 40px
+	//	height: 40px
+	//	position: absolute
+	//	left: 10px
+	//	top: 15px
+	//	display: none
+	//	+r($mob)
+	//		display: block
+	//	span
+	//		display: block
+	//		height: 4px
+	//		background: white
+	//		margin-top: 7px
+	&__logo
+		display: inline-block
+		vertical-align: middle
+.nav
+	vertical-align: middle
+	font-size: 0
+	margin-left: 50px
+	display: inline-block
+	li
+		display: inline-block
+		margin-right: 40px
+		&:last-of-type
+			margin-right: 0
+	a
+		color: white
+		font-size: 15px
+		&:hover, &.is-active
+			font-weight: bold
+.content
+	background: #F2F2F2
+	&__title
+		font-size: 21px
+		margin-left: 20px
+		margin-bottom: 35px
+	&__inner
+		width: 960px
+		margin: 0 auto
+		padding-top: 40px
+		padding-bottom: 90px
+	&__box
+		box-shadow: 1.4px 1.4px 2px #e0e0e0
+		background: white
+
+
+.tabs
+	padding-left: 20px
+	border-bottom: 1px solid $borderColor
+	ul
+		font-size: 0
+	li
+		display: inline-block
+		margin-right: 40px
+		&:last-of-type
+			margin-right: 0
+			button
+				color: $blue
+				&:hover
+					border-bottom-color: transparent
+				&:before
+					display: inline-block
+					content: ''
+					vertical-align: text-top
+					+s(plus)
+					margin-right: 10px
+
+
+	button
+		text-transform: uppercase
+		font-size: 15px
+		color: #bdbdbd
+		background: transparent
+		padding: 17px 0
+		border-bottom: 2px solid transparent
+
+		&:hover, &.is-active
+			color: $blue
+			border-bottom-color: $blue
+
+
+
+.form
+	padding: 25px 20px 35px 20px
+	position: relative
+	&__data-wrap
+		position: relative
+		display: inline-block
+		vertical-align: middle
+		padding-top: 30px
+		&_name
+			margin-right: 20px
+		&_city
+			width: 225px
+
+			//width: 175px
+		&_date, &_amount, &_time
+			width: 25%
+			& .form__data
+				border-right: none
+
+		&_countries
+			display: block
+
+
+	&__data
+		height: 50px
+		line-height: 50px
+		font-size: 15px
+		text-transform: uppercase
+		color: black
+		padding: 0 20px
+		border: 1px solid $borderColor
+		position: relative
+		select
+			position: absolute
+			cursor: pointer
+			left: 0
+			top: 0
+			width: 100%
+			height: 48px
+			border: none
+			color: inherit
+			font-size: inherit
+			padding: inherit
+			-webkit-appearance: none
+			-moz-appearance: none
+			text-indent: 1px
+			text-overflow: ''
+			option
+				width: 200px
+				outline: 1px solid red
+
+	&__data-hint
+		font-size: 12px
+		position: absolute
+		top: 5px
+		color: $main
+		left: 20px
+	&__countries
+		margin-top: 30px
+		margin-bottom: 35px
+
+	&__countries-inner
+		border: 1px solid $borderColor
+		padding: 20px
+	&__text
+		font-size: 15px
+	&__countries-list
+		margin-top: 20px
+		font-size: 0
+	&__countries-item
+		background: #F2F2F2
+		padding: 10px 12px
+		border-radius: 10px
+		display: inline-block
+		margin-right: 15px
+		&:last-of-type
+			margin-right: 0
+	&__countries-flag
+		display: inline-block
+		margin-right: 5px
+		&_thai
+			+s(thai)
+		&_viet
+			+s(viet)
+		&_indo
+			+s(indo)
+	&__countries-cancel
+		display: inline-block
+		vertical-align: middle
+		margin-left: 30px
+		background-color: transparent
+		+s(cancel)
+	&__countries-btns
+		margin-top: 25px
+	&__countries-btn
+		text-transform: uppercase
+		font-size: 15px
+		border: 2px solid $blue
+		padding: 11px 17px
+		border-radius: 18px
+		background: white
+		color: $blue
+		display: inline-block
+		margin-right: 15px
+		&_country
+			background: $blue
+			color: white
+			margin-right: 0
+
+	&__filters
+		font-size: 0
+		.form__data-wrap
+			display: table-cell
+	&__filters-row
+		display: table-row
+		&_small
+			display: block
+			width: 75%
+			margin-top: 20px
+			& .form__data-wrap
+				width: 20%
+				.form__data
+					border-right: none
+			& .form__data-wrap_location
+				width: 25%
+				.form__data
+					border-right: 1px solid $borderColor
+
+	&__hotel-rating
+		+s(rating)
+		margin-top: 15px
+	&__rating-ico
+		color: #00AF5A
+		&:before
+			display: inline-block
+			content: ''
+			+s(crown)
+			margin: 0 5px 0 5px
+
+	&__cancel
+		text-transform: uppercase
+		color: #F65A48
+		font-size: 15px
+		background-color: transparent
+		position: absolute
+		right: 20px
+		bottom: 50px
+		&:before
+			display: inline-block
+			content: ''
+			margin-right: 10px
+			vertical-align: middle
+			+s(cancel-red)
+	&__submit
+		width: 250px
+		height: 50px
+		line-height: 50px
+		color: white
+		text-transform: uppercase
+		text-align: center
+		background: #FF8F38
+		font-size: 15px
+		position: absolute
+		right: 20px
+		top: 50px
+		&:hover
+			background: darken(#FF8F38, 15%)
+		span
+			display: inline-block
+			+s(arrow)
+			vertical-align: middle
+			margin-left: 8px
+
+.ui-widget-header
+	background: $blue !important
+	border: none !important
+	.ui-icon
+		background-image: url("../img/ui-icons_ffffff_256x240.png") !important
+.ui-datepicker-next:hover, .ui-datepicker-prev:hover
+	background: transparent !important
+	border: 1px solid white !important
+
+
+.footer
+	padding-top: 50px
+	padding-bottom: 45px
+	border-top: 1px solid $borderColor
+	&__title
+		font-size: 16px
+		text-transform: uppercase
+		margin-bottom: 15px
+	&__main
+		+flex(space-between)
+		margin-bottom: 40px
+	li
+		color: #8E8EB7
+		margin-bottom: 5px
+		font-size: 14px
+		&:last-of-type
+			margin-bottom: 0
+	a
+		&:hover
+			color: #FF8F38
+			//i
+			//	color: #FF8F38
+		&.underlined
+			border-bottom: 1px dotted
+		i
+			display: inline-block
+			margin-right: 5px
+	&__out-text
+		color: #8E8EB7
+		font-size: 14px
+		text-align: right
