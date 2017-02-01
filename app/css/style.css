@@ -38,10 +38,13 @@ a:active { -webkit-transform: scale(0.95); -ms-transform: scale(0.95); transform
 
 .inner { width: 1200px; margin: 0 auto; position: relative; padding: 0 10px; }
 
-.header { padding: 8px 0; background: #0089D5; }
+.header { padding: 8px 0; background: #0089D5; z-index: 100; position: relative; }
+.header__burger { width: 40px; height: 40px; position: absolute; right: 20px; top: -5px; display: none; }
+.header__burger span { display: block; height: 4px; background: white; margin-top: 7px; }
 .header__logo { display: inline-block; vertical-align: middle; }
 
 .nav { vertical-align: middle; font-size: 0; margin-left: 50px; display: inline-block; }
+.nav.is-visible { display: inline-block; }
 .nav li { display: inline-block; margin-right: 40px; }
 .nav li:last-of-type { margin-right: 0; }
 .nav a { color: white; font-size: 15px; }
@@ -72,20 +75,21 @@ a:active { -webkit-transform: scale(0.95); -ms-transform: scale(0.95); transform
 .form__data { height: 50px; line-height: 50px; font-size: 15px; text-transform: uppercase; color: black; padding: 0 20px; border: 1px solid #DFDFDF; position: relative; }
 .form__data select { position: absolute; cursor: pointer; left: 0; top: 0; width: 100%; height: 48px; border: none; color: inherit; font-size: inherit; padding: inherit; -webkit-appearance: none; -moz-appearance: none; text-indent: 1px; text-overflow: ""; }
 .form__data select option { width: 200px; outline: 1px solid red; }
-.form__data-hint { font-size: 12px; position: absolute; top: 5px; color: #bdbdbd; left: 20px; }
+.form__data-hint { font-size: 12px; position: absolute; top: 5px; color: #bdbdbd; left: 20px; line-height: 1; }
 .form__countries { margin-top: 30px; margin-bottom: 35px; }
-.form__countries-inner { border: 1px solid #DFDFDF; padding: 20px; }
+.form__countries-inner { border: 1px solid #DFDFDF; padding: 20px 20px 0 20px; }
 .form__text { font-size: 15px; }
 .form__countries-list { margin-top: 20px; font-size: 0; }
-.form__countries-item { background: #F2F2F2; padding: 10px 12px; border-radius: 10px; display: inline-block; margin-right: 15px; }
+.form__countries-item { background: #F2F2F2; padding: 10px 12px; border-radius: 10px; display: inline-block; margin-right: 15px; margin-bottom: 20px; }
 .form__countries-item:last-of-type { margin-right: 0; }
 .form__countries-flag { display: inline-block; margin-right: 5px; }
 .form__countries-flag_thai { background-image: url("../img/icons.png"); width: 16px; height: 13px; background-position: -80px -22px; }
 .form__countries-flag_viet { background-image: url("../img/icons.png"); width: 16px; height: 13px; background-position: 0px -43px; }
 .form__countries-flag_indo { background-image: url("../img/icons.png"); width: 16px; height: 13px; background-position: -60px -22px; }
 .form__countries-cancel { display: inline-block; vertical-align: middle; margin-left: 30px; background-color: transparent; background-image: url("../img/icons.png"); width: 14px; height: 14px; background-position: 0px -60px; }
-.form__countries-btns { margin-top: 25px; }
+.form__countries-btns { margin-top: 25px; padding-left: 20px; }
 .form__countries-btn { text-transform: uppercase; font-size: 15px; border: 2px solid #009DDE; padding: 11px 17px; border-radius: 18px; background: white; color: #009DDE; display: inline-block; margin-right: 15px; }
+.form__countries-btn:hover { -webkit-box-shadow: 1px 1px 10px black; box-shadow: 1px 1px 10px black; }
 .form__countries-btn_country { background: #009DDE; color: white; margin-right: 0; }
 .form__filters { font-size: 0; }
 .form__filters .form__data-wrap { display: table-cell; }
@@ -100,8 +104,8 @@ a:active { -webkit-transform: scale(0.95); -ms-transform: scale(0.95); transform
 .form__rating-ico:before { display: inline-block; content: ""; background-image: url("../img/icons.png"); width: 13px; height: 10px; background-position: -20px -43px; margin: 0 5px 0 5px; }
 .form__cancel { text-transform: uppercase; color: #F65A48; font-size: 15px; background-color: transparent; position: absolute; right: 20px; bottom: 50px; }
 .form__cancel:before { display: inline-block; content: ""; margin-right: 10px; vertical-align: middle; background-image: url("../img/icons.png"); width: 16px; height: 17px; background-position: 0px -22px; }
-.form__submit { width: 250px; height: 50px; line-height: 50px; color: white; text-transform: uppercase; text-align: center; background: #FF8F38; font-size: 15px; position: absolute; right: 20px; top: 50px; }
-.form__submit:hover { background: #eb6700; }
+.form__submit { width: 250px; height: 50px; line-height: 50px; color: white; text-transform: uppercase; text-align: center; background: #FF8F38; font-size: 15px; position: absolute; right: 20px; top: 55px; }
+.form__submit:hover { background: #eb6700; -webkit-box-shadow: 1px 1px 10px black; box-shadow: 1px 1px 10px black; }
 .form__submit span { display: inline-block; background-image: url("../img/icons.png"); width: 16px; height: 16px; background-position: -40px -22px; vertical-align: middle; margin-left: 8px; }
 
 .ui-widget-header { background: #009DDE !important; border: none !important; }
@@ -112,16 +116,58 @@ a:active { -webkit-transform: scale(0.95); -ms-transform: scale(0.95); transform
 .footer { padding-top: 50px; padding-bottom: 45px; border-top: 1px solid #DFDFDF; }
 .footer__title { font-size: 16px; text-transform: uppercase; margin-bottom: 15px; }
 .footer__main { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -webkit-justify-content: space-between; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: stretch; -webkit-align-items: stretch; -ms-flex-align: stretch; align-items: stretch; -webkit-flex-wrap: wrap; -ms-flex-wrap: wrap; flex-wrap: wrap; margin-bottom: 40px; }
-.footer li { color: #8E8EB7; margin-bottom: 5px; font-size: 14px; }
+.footer li { color: #838383; margin-bottom: 5px; font-size: 14px; }
 .footer li:last-of-type { margin-bottom: 0; }
 .footer a:hover { color: #FF8F38; }
 .footer a.underlined { border-bottom: 1px dotted; }
 .footer a i { display: inline-block; margin-right: 5px; }
-.footer__out-text { color: #8E8EB7; font-size: 14px; text-align: right; }
+.footer__out-text { color: #838383; font-size: 14px; text-align: right; }
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px){
  *{ -webkit-text-size-adjust: none; } }
 @media only screen and (max-width: 1200px){
  .inner{ width: auto; } }
+@media only screen and (max-width: 960px){
+ .content__inner{ width: 100%; }
+ .tabs li{ margin-right: 20px; }
+ .form__filters-row_small{ width: 100%; }
+ .form__filters-row_small .form__data-wrap{ width: 15%; }
+ .form__cancel{ position: static; display: inline-block; margin-top: 20px; }
+ .form__submit{ width: 220px; }
+ .footer__main{ -webkit-justify-content: space-around; -ms-flex-pack: distribute; justify-content: space-around; }
+ .footer ul{ margin: 0 20px 20px 20px; } }
+@media only screen and (max-width: 767px){
+ .header{ position: fixed; width: 100%; }
+ .header__burger{ display: block; }
+ .nav{ display: none; position: absolute; top: 42px; margin-left: 0; background: #0089D5; left: 0; width: 100%; padding: 10px 0; }
+ .nav li{ display: block; text-align: center; margin-right: 0; margin-bottom: 5px; }
+ .content{ padding-top: 50px; }
+ .content__title{ text-align: center; margin-bottom: 25px; font-size: 20px; }
+ .content__inner{ padding-top: 30px; padding-bottom: 60px; }
+ .tabs li{ display: block; margin-right: 0; text-align: center; }
+ .tabs button{ font-size: 14px; padding: 10px 0; }
+ .form{ text-align: center; }
+ .form__data-wrap{ display: block; }
+ .form__data-wrap_name{ margin-right: 0; }
+ .form__data-wrap_city{ width: 100%; }
+ .form__data-wrap_hotels .form__text{ text-align: left; }
+ .form__data-wrap_date, .form__data-wrap_amount, .form__data-wrap_time{ width: 100%; }
+ .form__data-wrap_date .form__data, .form__data-wrap_amount .form__data, .form__data-wrap_time .form__data{ border-right: 1px solid #DFDFDF; }
+ .form__data{ display: block; width: 100%; margin-bottom: 15px; font-size: 14px; }
+ .form__data-hint{ left: 0; }
+ .form__countries{ margin-top: 15px; margin-bottom: 20px; }
+ .form__text{ font-size: 14px; }
+ .form__countries-btn{ margin-right: 0; margin-bottom: 10px; font-size: 14px; }
+ .form__filters .form__data-wrap{ display: block; }
+ .form__filters-row{ display: block; }
+ .form__filters-row_small{ margin-top: 0; }
+ .form__filters-row_small .form__data-wrap{ width: 100%; }
+ .form__filters-row_small .form__data-wrap .form__data{ border-right: 1px solid #DFDFDF; }
+ .form__cancel{ font-size: 14px; }
+ .form__submit{ position: static; margin: 20px 10px; font-size: 14px; }
+ .footer{ padding: 35px 0; }
+ .footer__title{ text-align: center; }
+ .footer__main{ display: block; text-align: center; }
+ .footer__out-text{ text-align: center; } }
 
 
 
